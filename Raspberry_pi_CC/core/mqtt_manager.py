@@ -9,7 +9,7 @@
             else:
                 self.log(f"✗ MQTT connection failed (code {reason_code})")
 
-        def on_message(client, userdata, msg):
+        def on_message(client, userdata, msg): 
             try:
                 topic = msg.topic
                 payload = json.loads(msg.payload.decode())

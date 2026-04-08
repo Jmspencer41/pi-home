@@ -18,8 +18,6 @@ from PyQt6.QtGui import QFont
 from .top_layer_buttons import TopLayerButtons
 from .widgets.device_panel import DeviceListLayout
 from .widgets.environment_panel import EnvironmentLayout
-from .widgets.network_status import NetworkStatusWidget
-from .dialogs.configure_gateway import ConfigureGatewayDialog
 from Raspberry_pi_CC.core.device_manager import DeviceManager
 
 
@@ -28,7 +26,6 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.device_manager = DeviceManager()
         self.init_ui()
-        self._connect_signals()
 
     def init_ui(self):
         screen = self.screen()
@@ -54,12 +51,6 @@ class MainWindow(QMainWindow):
         title_widget.setAlignment(Qt.AlignmentFlag.AlignCenter)
         title_widget.setStyleSheet("color: #ecf0f1; padding: 20px;")
         main_layout.addWidget(title_widget)
-
-        ###### Network Status Indicator ######
-        self.network_status = NetworkStatusWidget(height)
-        main_layout.addWidget(self.network_status, alignment=Qt.AlignmentFlag.AlignCenter)
-
-        main_layout.addSpacing(int(spacingSize * 0.5))
 
         ###### Top Buttons ######
         top_layer_buttons = TopLayerButtons(height)
