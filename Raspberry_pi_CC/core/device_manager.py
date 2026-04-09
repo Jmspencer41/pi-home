@@ -1,12 +1,3 @@
-"""
-device_manager.py  (UPDATED — zero-config support)
-
-Changes from original:
-  - Added gateway_ready_received signal for network status widget
-  - Added config_requested signal for unconfigured ESP32 detection
-  - Added send_configure() method
-  - _on_config_requested handler emits to GUI
-"""
 
 from PyQt6.QtCore import QObject, pyqtSignal
 
@@ -19,7 +10,6 @@ class DeviceManager(QObject):
 
     device_added = pyqtSignal(object)
     device_state_changed = pyqtSignal(str, str, object)
-    gateway_connection_changed = pyqtSignal(bool)
 
     def __init__(self):
         super().__init__()
