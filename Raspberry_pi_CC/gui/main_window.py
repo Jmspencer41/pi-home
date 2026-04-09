@@ -1,10 +1,5 @@
 """
-main_window.py  (UPDATED — network status + zero-config support)
-
-Changes:
-  - Added NetworkStatusWidget below the title
-  - Wired gateway_connection_changed and gateway_ready_received to status widget
-  - Wired config_requested to show ConfigureGatewayDialog
+main_window.py
 """
 
 from PyQt6.QtWidgets import (QMainWindow,
@@ -61,7 +56,7 @@ class MainWindow(QMainWindow):
         ###### Devices and Environment Area ######
         Devices_layout = QHBoxLayout()
         Devices_layout.setSpacing(int(height * 0.015))
-        device_list_layout = DeviceListLayout(height)
+        device_list_layout = DeviceListLayout(self.device_manager, height)
 
         sensor = self.device_manager.get_sensor()
         envi_area_layout = EnvironmentLayout(sensor, height)
