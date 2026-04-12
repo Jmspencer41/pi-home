@@ -28,7 +28,7 @@ class MqttManager(QObject):
 
     # ── Configuration ──────────────────────────────────────────────────────────
 
-    DEFAULT_HOST = "localhost" #TODO: make this configurable for remote brokers and mobile use
+    DEFAULT_HOST = "localhost"
     DEFAULT_PORT = 1883
     DEFAULT_KEEPALIVE = 60
 
@@ -36,7 +36,7 @@ class MqttManager(QObject):
     TOPIC_DEVICE_ANNOUNCE = "home/devices/+/announce"    # subscribe – wildcard
     TOPIC_DEVICE_STATE    = "home/devices/+/state"       # subscribe – wildcard
     TOPIC_SENSOR_DATA     = "home/sensors/#"             # subscribe – wildcard
-    TOPIC_CMD_TEMPLATE    = "home/devices/{}/command"    # publish   – per device
+    TOPIC_CMD_TEMPLATE    = "home/devices/{}/command"    # publish – per device
 
     def __init__(self, host=None, port=None, parent=None):
         super().__init__(parent)
