@@ -81,18 +81,25 @@ Required Presentation Components (6–10 slides):
 - Lights with motion detection
 ---
 
-### Wiring diagram
+## Wiring diagrams
+
+<div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+
+<img src="./images/Blind%20Control.png" width="250px">
+
+<img src="./images/Screenshot%202026-04-09%20192437.png" width="250px">
+
+<img src="./images/radar.png" width="250px">
+
+<img src="./images/cc.png" width="250px">
+
+</div>
 
 ---
 
 ### Architecture diagram
 
-**Message Flow:**
-- Devices announce on `home/devices/{id}/announce`
-- Control Center subscribes and discovers devices
-- Commands sent via `home/devices/{id}/command`
-- State updates via `home/devices/{id}/state`
-- Sensor data published to `home/sensors/#`
+<img src="./images/arch.png" width="550px" style="margin-left: 150px;">
 
 ---
 
@@ -100,7 +107,7 @@ Required Presentation Components (6–10 slides):
 ### Control Center Architecture
 
 - **MqttManager**: Paho MQTT client bridging broker to PyQt6 signals
-- **DeviceManager**: Device registry + state tracking + sensor integration
+- **DeviceManager**: Device registry + state tracking + sensor integration and Thread Control
 - **DevicePanel**: Scrollable, touch-friendly device control UI
 - **EnvironmentPanel**: Real-time temp/humidity display
 
@@ -131,7 +138,7 @@ Required Presentation Components (6–10 slides):
 Inherit from `SmartDevice`, override 2 methods → device is ready to go
 
 - Control panel auto-discovers it via MQTT announcement
-- No configuration needed
+- Configure the control logic of the end device (Only On/Off functionality currently)
 
 ---
 
@@ -157,6 +164,6 @@ Inherit from `SmartDevice`, override 2 methods → device is ready to go
 - **Advanced control logic**: Dimming, temperature setpoints, automation rules
 - **More end devices**: Integration with smart locks, thermostats
 - **Zigbee protocol**: Low-power mesh networking for battery devices
-- **Mobile app**: Remote access beyond local network
+- **Home Assistant Integration:** Integrate with the Home assistant ecosystem
 - **Cloud backup**: Logs and automation scheduling
 - **3D printed casings**: Professional enclosures for all devices 
